@@ -11,10 +11,15 @@
 #docker pull chef/inspec
 
 
-target_server=54.91.52.85
+target_server=$1
 
-#user=`whoami` # chanage this line to override ssh user
-user='ubuntu'
+if [ "$target_server" == "" ]; then
+  echo "Missing target server to scan via ssh"
+  exit 1
+fi
+
+user=`whoami` # chanage this line to override ssh user
+#user='ubuntu'
 
 #inspec="docker run -it --rm -v $SSH_AUTH_SOCK:/tmp/agent.sock -e 'SSH_AUTH_SOCK=/tmp/agent.sock' chef/inspec"
 inspec=`command -v inspec 2> /dev/null`
