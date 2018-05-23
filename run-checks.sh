@@ -18,8 +18,8 @@ if [ "$target_server" == "" ]; then
   exit 1
 fi
 
-user=`whoami` # chanage this line to override ssh user
-#user='ubuntu'
+#user=`whoami` # chanage this line to override ssh user
+user='ubuntu'
 
 #inspec="docker run -it --rm -v $SSH_AUTH_SOCK:/tmp/agent.sock -e 'SSH_AUTH_SOCK=/tmp/agent.sock' chef/inspec"
 inspec=`command -v inspec 2> /dev/null`
@@ -30,7 +30,8 @@ fi
 
 compliance_profiles='dev-sec/ssh-baseline dev-sec/linux-baseline dev-sec/linux-patch-baseline'
 
+# Requires inspec v2
 for profile in $compliance_profiles; do
   echo "Running inspec profile $profile"
-  $inspec  supermarket exec $profile -t ssh://$user@$target_server
+  $inspec  supermarket exec $profile --reporter=cli documentation:reports/$profile.txt json:reports/$profile.json -t ssh://$user@$target_server
 done
