@@ -33,5 +33,5 @@ compliance_profiles='dev-sec/ssh-baseline dev-sec/linux-baseline dev-sec/linux-p
 # Requires inspec v2
 for profile in $compliance_profiles; do
   echo "Running inspec profile $profile"
-  $inspec  supermarket exec $profile --reporter=cli documentation:reports/$profile.txt json:reports/$profile.json -t ssh://$user@$target_server
+  $inspec  supermarket exec $profile --reporter=cli html:reports/$profile.html json:reports/$profile.json -t ssh://$user@$target_server
 done
