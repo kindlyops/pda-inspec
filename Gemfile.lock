@@ -29,6 +29,7 @@ GEM
       multi_json
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
+    ed25519 (1.2.4)
     equatable (0.5.0)
     erubis (2.7.0)
     excon (0.62.0)
@@ -234,6 +235,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt_pbkdf (>= 1.0, < 2.0)
+  ed25519 (~> 1.2)
   inspec
   rbnacl (>= 3.2, < 5.0)
 
