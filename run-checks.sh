@@ -26,6 +26,7 @@ user=`whoami` # change this line to override ssh user
 inspec=`command -v inspec 2> /dev/null`
 if [ "$inspec" == "" ]; then
   echo "Could not find inspec command, see https://github.com/chef/inspec for installation"
+  echo "brew cask install chef/chef/inspec"
   exit 1
 fi
 
